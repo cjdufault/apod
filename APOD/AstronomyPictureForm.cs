@@ -19,6 +19,8 @@ namespace APOD
             // formatted as MM/DD/YYYY      
             DateTime today = DateTime.Now;
             txtDate.Text = $"{today:d}";
+
+            GetAPOD(today);
         }
 
         private void btnGetToday_Click(object sender, EventArgs e)
