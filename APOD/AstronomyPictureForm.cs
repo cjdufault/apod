@@ -66,23 +66,14 @@ namespace APOD
 
         private void HandleResponse(APODResponse apodResponse, string error)
         {
-            // TODO: if there is an error from the request, show a MessageBox 
-
-            // TODO: Make sure response is an image (not a video or other media type) 
-
-            // TODO: If there are no errors, and the response is an image, call a method 
-            //  (that you'll create) to display the info in the form
-
-            // TODO: if APOD is not an image, display a message box, ask user to try another date
-
-            if (error != null)
+            if (error != null) // bad response
             {
                 MessageBox.Show(error, "Error");
                 Debug.WriteLine(error);
                 return;
             }
 
-            if (apodResponse.MediaType.Equals("image"))
+            if (apodResponse.MediaType.Equals("image")) // make sure the response is an image
             {
                 LoadImageResponseIntoForm(apodResponse);
             }
