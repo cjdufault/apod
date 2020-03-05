@@ -87,7 +87,12 @@ namespace APOD
         {
             // display title and credit
             lblTitle.Text = apodResponse.Title;
-            lblCredits.Text = $"Image credit: {apodResponse.Copyright}";
+
+            // remove newlines & redundant "Image credit"-s from copyright info
+            string imageCredit = apodResponse.Copyright.Replace("\n", " ");
+            imageCredit = imageCredit.Replace("Image credit: ", "");
+
+            lblCredits.Text = $"Image credit: {imageCredit}";
 
             // parse, format, and display image date
             DateTime date = DateTime.Parse(apodResponse.Date);
